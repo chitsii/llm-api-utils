@@ -1,0 +1,16 @@
+[project]
+name = "llm-api-utils"
+version = "0.1.0"
+description = "Utilities for working with various LLM APIs in Python"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "openai",
+    "google-generativeai",
+    "anthropic",
+    "tenacity",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

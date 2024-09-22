@@ -1,5 +1,5 @@
 # llm-api-utils
-For more details see [source code](./llm_api_utils.py)  
+For more details see [source code](src/llm_api_utils/llm_api_utils.py)  
 ## How to use
 ### Setup
 ```bash
@@ -52,7 +52,7 @@ print('#######', model_name)
 
 ## Links
 ### OpenAI
-[Sample code](./call_gpt.py)
+[Sample code](src/llm_api_utils/call_gpt.py)
 - document: https://platform.openai.com/docs/overview  
 - library: https://github.com/openai/openai-python  
 - models: https://platform.openaxi.com/docs/models  
@@ -61,7 +61,7 @@ print('#######', model_name)
 - status: https://status.openai.com/  
 - cookbook: https://github.com/openai/openai-cookbook
 ### Anthropic
-[Sample code](./call_claude.py)  
+[Sample code](src/llm_api_utils/call_claude.py)  
 - document: https://docs.anthropic.com/en/docs  
 - library: https://github.com/anthropics/anthropic-sdk-python  
 - models: https://docs.anthropic.com/en/docs/models-overview  
@@ -70,7 +70,7 @@ print('#######', model_name)
 - status: https://status.anthropic.com/  
 - cookbook: https://github.com/anthropics/anthropic-cookbook  
 ### Google
-[Sample code](./call_gemini.py)
+[Sample code](src/llm_api_utils/call_gemini.py)
 - document: https://ai.google.dev/gemini-api/docs  
 - library: https://github.com/google-gemini/generative-ai-python/tree/main  
 - models: https://ai.google.dev/gemini-api/docs/models/gemini  
