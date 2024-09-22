@@ -1,5 +1,5 @@
 # llm-api-utils
-For more details see [source code](src/llm_api_utils/llm_api_utils.py)  
+For more details see [source code](src/llm_api_utils.py)  
 ## How to use
 ### Setup
 ```bash
