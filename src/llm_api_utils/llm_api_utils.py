@@ -29,7 +29,7 @@ def get_llm_response(model_name: str, params_: dict, messages: list[dict]) -> st
         return get_gemini_response(model_name, params, messages)
     else:
         raise ValueError(f"model_name {model_name} not supported. Supported model names are: {OPENAI_MODEL_NAMES + ANTHROPIC_MODEL_NAMES + GEMINI_MODEL_NAMES}")
-    
+
 
 @retry(wait=wait_fixed(90), stop=stop_after_attempt(10))
 async def get_llm_response_async(model_name: str, params_: dict, messages: list[dict]) -> str:
@@ -211,29 +211,46 @@ def get_anthropic_model_names():
     return model_names
 
 
-OPENAI_MODEL_NAMES = get_gpt_model_names()
-GEMINI_MODEL_NAMES = get_gemini_model_names()
-ANTHROPIC_MODEL_NAMES = get_anthropic_model_names()
+
+# Get model names for OpenAI, Gemini, and Anthropic
+if os.environ.get("OPENAI_API_KEY"):
+    OPENAI_MODEL_NAMES = get_gpt_model_names()
+else:
+    print("OPENAI_API_KEY not set. Disabling OpenAI models.")
+    OPENAI_MODEL_NAMES = []
+
+if os.environ.get("GOOGLE_API_KEY"):
+    GEMINI_MODEL_NAMES = get_gemini_model_names()
+else:
+    print("GOOGLE_API_KEY not set. Disabling Gemini models.")
+    GEMINI_MODEL_NAMES = []
+
+if os.environ.get("ANTHROPIC_API_KEY"):
+    ANTHROPIC_MODEL_NAMES = get_anthropic_model_names()
+else:
+    print("ANTHROPIC_API_KEY not set. Disabling Anthropic models.")
+    ANTHROPIC_MODEL_NAMES = []
 
 
-if __name__ == '__main__':
-    # model_name = 'gpt-4o-mini-2024-07-18'
-    # model_name = 'models/gemini-1.5-flash-001'
-    model_name = 'claude-3-5-sonnet-20240620'
-    params = {
-        'max_tokens': 256, 
-        'temperature': 0.0
-    }
-    messages = [
-        {"role": "system", "content": "回答の際は、3つの回答を箇条書きで回答してください。"},
-        {"role": "user", "content": "大喜利しましょう。とても面白い回答をしてくださいね。"},
-        {"role": "assistant", "content": "おけ、任せて"},
-        {"role": "user", "content": "こんな台風は嫌だ、どんな台風？"}
-    ]
-    response = get_llm_response(model_name, params, messages)
-    print(response)
 
-    async def main():
-        response = await get_llm_response_async(model_name, params, messages)
-        print(response)
-    asyncio.run(main())
+# if __name__ == '__main__':
+#     # model_name = 'gpt-4o-mini-2024-07-18'
+#     # model_name = 'models/gemini-1.5-flash-001'
+#     model_name = 'claude-3-5-sonnet-20240620'
+#     params = {
+#         'max_tokens': 256,
+#         'temperature': 0.0
+#     }
+#     messages = [
+#         {"role": "system", "content": "回答の際は、3つの回答を箇条書きで回答してください。"},
+#         {"role": "user", "content": "大喜利しましょう。とても面白い回答をしてくださいね。"},
+#         {"role": "assistant", "content": "おけ、任せて"},
+#         {"role": "user", "content": "こんな台風は嫌だ、どんな台風？"}
+#     ]
+#     response = get_llm_response(model_name, params, messages)
+#     print(response)
+
+#     async def main():
+#         response = await get_llm_response_async(model_name, params, messages)
+#         print(response)
+#     asyncio.run(main())
