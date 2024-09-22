@@ -1,3 +1,17 @@
+[元リポジトリ](https://github.com/kenoharada/llm-api-utils.git)をpip installできるように軽く改造したもの
+
+* usage:
+  * uv pip install --upgrade https://github.com/chitsii/llm-api-utils.git
+
+* (備忘)シンク方法
+  * sync fork
+  * copy llm-api-utils/* => llm-api-utils/src/*
+    * 例は除く
+  * src/*.pyに__main__.pyがあったらコメントアウト
+
+
+---
+
 # llm-api-utils
 For more details see [source code](src/llm_api_utils.py)  
 ## How to use
